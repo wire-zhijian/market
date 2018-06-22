@@ -7,5 +7,6 @@ public class Test {
 //		org.mybatis.spring.mapper.MapperScannerConfigurer
 //		org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
 //		org.springframework.web.servlet.DispatcherServlet
+//		org.springframework.web.context.ContextLoaderListener
 	}
 }
