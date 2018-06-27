@@ -6,6 +6,31 @@
 	</select>
 	
 	<insert id="insert" parameterType="zhijian.Model.User.User">
-		INSERT INTO user (user_name, password) VALUES(#{userName}, #{password});
+		INSERT INTO user (user_name, password, mobile, mobile_crc) VALUES(#{userName}, #{password}, #{mobile}, CRC32(#{mobile}));
 	</insert>
+	
+	<update id="update" parameterType="zhijian.Model.User.User">
+		UPDATE user SET id = id
+		<!--choose>
+			<when></when>
+			<otherwise></otherwise>
+		</choose-->
+		
+		<if test="userName!=null and userName != ''">
+			, user_name = #{userName}
+		</if>
+		
+		<if test="password!=null and password != ''">
+			, password = #{password}
+		</if>
+		
+		<if test="mobile!=null and mobile != ''">
+			, mobile = #{mobile} , mobile_crc = CRC32(#{mobile})
+		</if>
+		
+		<if test="email!=null and email != ''">
+			, email = #{email}
+		</if>
+		WHERE id = #{id}
+	</update>
 </mapper>

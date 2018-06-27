@@ -18,10 +18,10 @@ public class UserTest {
 
 	@Test
 	public void test(){
-		User user = new User();
-		user.setUserName("zhijian");
-		user.setPassword("123");
-		
-		userService.insert(user);
+//		User user = new User();
+//		user.setUserName("zhijian");
+//		user.setPassword("123");
+//		
+//		userService.insert(user);
 	}
 }

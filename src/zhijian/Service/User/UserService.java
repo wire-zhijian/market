@@ -9,10 +9,15 @@ import zhijian.Model.User.User;
 
 @Service("userService")
 public class UserService {
+	
 	@Resource
 	private UserDao userDao;
 
-	public void insert(User user){
-		userDao.insert(user);
+	public void insert(User.InsertBuilder builder){
+		userDao.insert(builder.build());
+	}
+	
+	public void update(User.UpdateBuilder builder){
+		userDao.update(builder.build());
 	}
 }

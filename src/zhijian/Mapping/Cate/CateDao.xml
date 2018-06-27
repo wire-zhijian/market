@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zhijian.Dao.Cate.CateDao">
+	<insert id="insert" parameterType="zhijian.Model.Cate.Cate">
+		INSERT INTO cate (name) VALUES(#{cate})
+	</insert>
+	
+	<update id="update" parameterType="zhijian.Model.Cate.Cate">
+		UPDATE cate SET id = id
+		<if test="name != null and name != ''">
+			, name = #{name}
+		</if>		
+	</update>
+	
+	<select id="getById" parameterType="Integer" resultType="zhijian.Model.Cate.Cate">
+		SELECT * FROM cate WHERE id = #{id}	
+	</select>
+</mapper>
