@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zhijian.Dao.Goods.GoodsDao">
+	<insert id="insert" parameterType="zhijian.Model.Goods.Goods">
+		INSERT INTO goods (name, code, code_crc, cate_id, price, desc)VALUES(
+			#{name},
+			#{code},
+			CRC32(#{code}),
+			#{cate.id},
+			#{price},
+			#{desc}
+		);
+	</insert>
+	
+	<update id="update" parameterType="zhijian.Model.Goods.Goods">
+		UPDATE good SET id = id
+		<if test="name != null and name != ''">
+			, name = #{name}
+		</if>
+		
+		<if test="code != null and code != ''">
+			, code = #{code}, code_crc = CRC32(#{code})
+		</if>
+		
+		<if test="cate != null and cate.id > 0">
+			, cate_id = #{cate_id}
+		</if>
+		
+		<if test="price >= 0">
+			, price = #{price}
+		</if>
+		
+		<if test="desc != null and desc != ''">
+			, desc = #{desc}
+		</if>
+		WHERE id = #{id}
+	</update>
+</mapper>

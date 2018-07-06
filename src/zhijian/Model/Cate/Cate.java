@@ -3,7 +3,7 @@ package zhijian.Model.Cate;
 public class Cate {
 	private int id;
 	private String name;
-//	private List
+//	private List<User> goods = 
 	
 	public int getId() {
 		return id;
