@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zhijian.Dao.Shop.ShopDao">
+	<insert id="insert" parameterType="zhijian.Model.Shop.Shop" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO shop(name, create_date, expire_date, tel, address) VALUES(
+			#{name}, NOW(), #{expireDateFormat}, #{tel}, #{address}
+		)	
+	</insert>
+	
+	<update id="update" parameterType="zhijian.Model.Shop.Shop">
+		UPDATE shop SET id = id
+		<if test="name != null and name != ''">
+			, name = #{name}
+		</if>
+		<if test="expireDate > 0">
+			, expireDate = #{expireDateFormat}
+		</if>
+		<if test="tel != null and tel != ''">
+			, tel = #{tel}
+		</if>
+		<if test="address != null and address != ''">
+			, address = #{address}
+		</if>	
+	</update>
+	
+	<select id="search" parameterType="zhijian.Model.Shop.Shop$SearchBuilder" resultMap="shop">
+		SELECT * FROM shop WHERE 1 = 1
+		<if test="id > 0">
+			AND id = #{id}
+		</if>
+	</select>
+	
+	<resultMap type="zhijian.Model.Shop.Shop" id="shop">
+		<constructor>
+			<idArg column="id" javaType="_integer"></idArg>
+		</constructor>
+		<result property="name" column="name"></result>
+		<result property="createDate" column="create_date"></result>
+		<result property="expireDate" column="expire_date"></result>
+		<result property="tel" column="tel"></result>
+		<result property="address" column="address"></result>
+	</resultMap>
+</mapper>

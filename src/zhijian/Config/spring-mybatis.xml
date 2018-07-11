@@ -37,7 +37,4 @@
 		<property name="basePackage" value="zhijian/Dao/*"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
-	
-	
-	
 </beans>
